@@ -8,6 +8,7 @@ import com.rajutechies.contactusapp.repositories.ContactDetailsRepo;
 import com.rajutechies.contactusapp.services.util.TransformationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -33,6 +34,7 @@ public class ContactService {
         this.transformationService = transformationService;
     }
 
+    @Async
     public String saveContactDetails(ContactDetailsRequest contactDetailsRequest) {
         String returnValue = StatusCode.DATA_SAVED_SUCCESS.getStatusMessage();
         try {

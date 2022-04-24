@@ -36,9 +36,9 @@ public class ContactDetailsController {
         String applicationLabel = httpServletRequest.getHeader("applicationLabel");
         String correlationId = httpServletRequest.getHeader("correlationId");
         validateHeaders(applicationLabel, correlationId);
-        String resultData = contactService.saveContactDetails(contactDetailsRequest);
+        contactService.saveContactDetails(contactDetailsRequest);
         return new ResponseEntity<>(
-                transformationService.transformResponseMetaData(httpServletRequest, resultData, StatusCode.DATA_SAVED_SUCCESS), HttpStatus.CREATED
+                transformationService.transformResponseMetaData(httpServletRequest, StatusCode.DATA_SAVED_SUCCESS.getStatusMessage(), StatusCode.DATA_SAVED_SUCCESS), HttpStatus.ACCEPTED
         );
     }
 
